@@ -1,6 +1,5 @@
 package a0002_210119_1051_s3;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
