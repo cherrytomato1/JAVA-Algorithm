@@ -3,27 +3,28 @@ package a0003_210119_2174_g5;
 import java.util.Scanner;
 
 class Robot{
-    static int[] dr = {-1, 0, 1, 0};        //상 우 하 좌
-    static int[] dy = {0, 1, 0, -1};
+    private static final int[] dr = {-1, 0, 1, 0};        //상 우 하 좌
+    private static final int[] dy = {0, 1, 0, -1};
     int row;
     int col;
     int dir;
 
-    public Robot(int row, int col){
+    public Robot(int row, int col, int dir){
         this.row = row;
         this.col = col;
+        this.dir = dir;
     }
-    void front(){
+    private void front(){
         row = row + dr[dir];
         col = col + dy[dir];
     }
-    void left(){
+    private void left(){
         dir = (dir + 1) % 4;
     }
-    void right(){
+    private void right(){
         dir = (dir + 3) % 4;
     }
-    void order(char ord){
+    public void order(char ord){
         switch (ord){
             case 'F' :
                 front();
@@ -36,8 +37,6 @@ class Robot{
                 break;
         }
     }
-
-
 }
 
 public class Main {
@@ -54,8 +53,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int mapR = sc.nextInt();
         int mapC = sc.nextInt();
+        int mapR = sc.nextInt();
 
         int[][] map = new int[mapR][mapC];
 
@@ -63,16 +62,15 @@ public class Main {
         int M = sc.nextInt();
         Robot[] rbt = new Robot[N + 1];
 
-        System.out.println(mapR+ "! " + mapC);
+//        System.out.println(mapR+ "! " + mapC);
         for (int i = 1 ; i <= N ; i++) {
-            int row = sc.nextInt() - 1;
             int col = sc.nextInt() - 1;
+            int row = sc.nextInt() - 1;
 
 //            System.out.println(row + ", " + col);
             map[row][col] = i;
 
-            rbt[i] = new Robot(col, row);
-            rbt[i].dir = rtnDir(sc.next().charAt(0));
+            rbt[i] = new Robot(row, col, rtnDir(sc.next().charAt(0)));
         }
 
         for (int i = 0 ; i < M ; i++) {
@@ -84,14 +82,14 @@ public class Main {
                 int row = rbt[rbtNum].row;
                 int col = rbt[rbtNum].col;
 
-                System.out.println(col+"!! " + row +rbtNum);
+//                System.out.println(col+"!! " + row +rbtNum);
                 map[row][col] = 0;
                 rbt[rbtNum].order(order);
 
                 row = rbt[rbtNum].row;
                 col = rbt[rbtNum].col;
 
-                System.out.println(col+", " + row);
+//                System.out.println(col+", " + row);
                 if(row >= mapR || row < 0 || col >= mapC || col < 0) {
                     System.out.println("Robot " + rbtNum + " crashes into the wall");
                     return ;
