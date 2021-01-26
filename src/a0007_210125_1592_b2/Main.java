@@ -19,13 +19,12 @@ public class Main {
         while( true ){
             if(arr[ball] % 2 == 1)
                 ball = (ball + L) % N;
+
             else
                 ball = (ball - L + N) % N;
             arr[ball] ++;
-
             if(arr[ball] == M)
                 break;
-
             cnt++;
         }
         System.out.println(cnt);
