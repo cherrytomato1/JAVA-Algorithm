@@ -39,7 +39,7 @@
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-# *.iml
+*.iml
 # *.ipr
 
 # CMake
@@ -162,3 +162,4 @@ Temporary Items
 # End of https://www.toptal.com/developers/gitignore/api/java,macos,intellij
 /out/
 /.idea/
+*.gitignore
