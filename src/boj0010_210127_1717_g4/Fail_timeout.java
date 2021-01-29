@@ -1,4 +1,4 @@
-package a0010_210127_1717_g4;
+package boj0010_210127_1717_g4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +16,7 @@ class Linker{
     }
 }
 
-public class Main {
+public class Fail_timeout {
     static int N;
     static int M;
     static Linker[] linker;

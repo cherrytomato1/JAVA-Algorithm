@@ -1,4 +1,4 @@
-package a0008_210125_10810_b2;
+package boj0008_210125_10810_b2;
 
 import java.util.Scanner;
 

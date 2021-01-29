@@ -1,4 +1,4 @@
-package a0001_210116_1110_b1;
+package boj0001_210116_1110_b1;
 /*
 
 //https://www.acmicpc.net/problem/1110

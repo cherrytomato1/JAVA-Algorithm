@@ -1,4 +1,4 @@
-package a0002_210119_1051_s3;
+package boj0002_210119_1051_s3;
 
 import java.util.Scanner;
 
