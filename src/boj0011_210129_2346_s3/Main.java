@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 public class Main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    static Deque<Integer> dq= new ArrayDeque<>();
+    static Deque<Integer> dq = new ArrayDeque<>();
     static int N;
     static int[] M;
     static StringTokenizer st;
@@ -44,7 +44,6 @@ public class Main {
                     dq.addLast(dq.removeFirst());
                 }
             }
-
         }
     }
 
