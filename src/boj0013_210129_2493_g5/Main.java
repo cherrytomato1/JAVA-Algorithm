@@ -1,11 +1,7 @@
 package boj0013_210129_2493_g5;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -35,10 +31,11 @@ public class Main {
             height.push(tower[i]);
             index.push(i);
         }
-
+        StringBuilder sb = new StringBuilder();
         for(int i = 0 ; i < N ; i++){
-            System.out.print(ans[i] + " ");
+            sb.append(ans[i]).append(" ");
         }
+        System.out.println(sb);
     }
 
     public static void main(String[] args) throws IOException {
