@@ -1,4 +1,4 @@
-package boj.boj0021_210207_2504_s2;
+package boj.boj0022_210207_2504_s2;
 
 import java.util.*;
 import java.io.*;
