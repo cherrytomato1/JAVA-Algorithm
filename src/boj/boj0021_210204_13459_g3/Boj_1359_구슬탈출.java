@@ -1,4 +1,4 @@
-package boj.boj0020_210204_13459_g3;
+package boj.boj0021_210204_13459_g3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
