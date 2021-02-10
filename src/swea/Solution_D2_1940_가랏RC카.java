@@ -3,7 +3,7 @@ package swea;
 import java.util.*;
 import java.io.*;
 
-public class Solution_D2_1940_김민기 {
+public class Solution_D2_1940_가랏RC카 {
 	
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;

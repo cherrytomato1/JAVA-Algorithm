@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Solution_2805_김민기 {
+public class Solution_D3_2805_농작물수확하기 {
 	
 	static int N;
 	static int T;

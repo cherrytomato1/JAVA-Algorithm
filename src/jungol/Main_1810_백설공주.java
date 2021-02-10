@@ -2,7 +2,7 @@ package jungol;
 
 import java.io.*;
 
-public class Main_1810_김민기 {
+public class Main_1810_백설공주 {
 
 	
 	private static int[] srcArr;

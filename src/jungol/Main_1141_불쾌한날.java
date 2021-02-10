@@ -3,7 +3,7 @@ package jungol;
 import java.io.*;
 import java.util.*;
 
-public class Main_1141_김민기 {
+public class Main_1141_불쾌한날 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static int N;
 	static Stack<Integer> stk = new Stack<>();
