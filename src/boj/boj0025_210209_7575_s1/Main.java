@@ -18,7 +18,6 @@ public class Main {
 
     static int bfs(){
         int[] pos;
-
         int res = 0;
         while(!q.isEmpty()){
             for(int size = q.size(); size != 0; size--){
