@@ -22,7 +22,7 @@ package swea;
 import java.util.*;
 import java.io.*;
 
-public class Solution_D4_7208_김민기 {
+public class Solution_D4_7208_지도칠하기 {
 	static int N;
 	static boolean[][] contry;
 	static int[] colors;

@@ -18,7 +18,7 @@ class Tank {
 }
 
 
-public class Main_1873_김민기 {
+public class Solution_D3_1873_상호의배틀필드 {
 	static char[][] map;
 	private static char[] order;
 	private static Tank tank;

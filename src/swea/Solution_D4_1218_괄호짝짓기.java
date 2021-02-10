@@ -3,7 +3,7 @@ package swea;
 import java.util.*;
 import java.io.*;
 
-public class Solution_D4_1218_김민기 {
+public class Solution_D4_1218_괄호짝짓기 {
 	
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static String str;

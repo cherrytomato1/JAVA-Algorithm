@@ -2,7 +2,7 @@ package swea;
 import java.io.*;
 import java.util.*;
 
-public class Solution_D4_5432 {
+public class Solution_D4_5432_쇠막대기자르기 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringBuilder sb = new StringBuilder();
 	static Stack<Character> stk = new Stack<>();

@@ -3,7 +3,7 @@ package swea;
 import java.util.*;
 import java.io.*;
 
-public class Solution_D3_1228 {
+public class Solution_D3_1228_암호문1 {
 	
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringBuilder sb = new StringBuilder();

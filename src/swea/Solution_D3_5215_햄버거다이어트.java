@@ -3,7 +3,7 @@ package swea;
 import java.util.*;
 import java.io.*;
 
-public class Solution_D3_5215 {
+public class Solution_D3_5215_햄버거다이어트 {
 	
 	static int N;
 	static int L;
