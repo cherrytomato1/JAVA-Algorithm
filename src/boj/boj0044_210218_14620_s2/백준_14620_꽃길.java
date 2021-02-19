@@ -17,6 +17,7 @@ public class 백준_14620_꽃길 {
     static void init() throws IOException{
         N = Integer.parseInt(br.readLine());
         map = new int[N][N];
+        visited = new boolean[N][N];
 
         for(int r = 0; r < N; r++){
             st = new StringTokenizer(br.readLine());
@@ -67,8 +68,8 @@ public class 백준_14620_꽃길 {
     static void solve(){
         for(int r = 1 ; r < N - 1; r++){
             for(int c = 1; c < N - 1; c++){
-                visited = new boolean[N][N];    // 이거 없애도 될
                 find(r, c, 0, 1);
+                marker(r, c, false);
             }
         }
     }
