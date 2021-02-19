@@ -41,7 +41,6 @@ public class Solution_D4_3244_준환이의양팔저울 {
             return ;
         }
 
-
         for(int i = 0 ; i < N ; i++){
             if((flag & 1 << i) != 0)    continue;
             dfs(idx + 1, left + chu[i], right, flag | 1 << i);
