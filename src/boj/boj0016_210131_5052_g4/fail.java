@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class fail {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static List<String> list;
     static int t ;
