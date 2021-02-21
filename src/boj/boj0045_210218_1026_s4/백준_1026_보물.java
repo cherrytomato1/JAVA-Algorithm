@@ -8,12 +8,12 @@ public class 백준_1026_보물 {
     static StringTokenizer st;
 
     static int N;
-    static Integer[] A;
+    static int[] A;
     static Integer[] B;
 
     static void init() throws IOException{
         N = Integer.parseInt(br.readLine());
-        A = new Integer[N];
+        A = new int[N];
         B = new Integer[N];
 
         st = new StringTokenizer(br.readLine());
@@ -41,6 +41,4 @@ public class 백준_1026_보물 {
         init();
         System.out.println(solve());
     }
-
-
 }

@@ -18,7 +18,6 @@ public class 백준_14620_꽃길 {
         N = Integer.parseInt(br.readLine());
         map = new int[N][N];
         visited = new boolean[N][N];
-
         for(int r = 0; r < N; r++){
             st = new StringTokenizer(br.readLine());
             for(int c = 0; c < N; c++){
