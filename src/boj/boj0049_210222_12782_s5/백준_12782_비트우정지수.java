@@ -22,6 +22,7 @@ public class 백준_12782_비트우정지수 {
             if (bit1[i] != bit2[i])  diff++;
         }
         return (diff + Math.abs(bit1Cnt - bit2Cnt))/2;
+//        == return ( diff - Math.abs(bit1Cnt - bit2Cnt )) / 2 + Math.abs(bit1Cnt - bit2Cnt);
     }
 
     public static void main(String[] args) throws IOException{
