@@ -44,14 +44,6 @@ public class 백준_2146번_다리만들기 {
 				}
 			}
 		}
-
-		for(int r = 0 ; r < N ; r ++){
-
-			for(int c = 0 ; c < N; c++){
-				System.out.print(map[r][c] + " ");
-			}
-			System.out.println();
-		}
 	}
 
 	static void findIsland(){
@@ -60,20 +52,10 @@ public class 백준_2146번_다리만들기 {
 			Node curr = q.poll();
 			int row = curr.row;
 			int col = curr.col;
-//			System.out.println(curr.row + " aa " +  curr.col);
 			if(map[row][col] == 1){
 				map[row][col] += islandIdx;
 				setIsland(row, col, islandIdx++);
 			}
-
-		}
-
-
-		for(int r = 0 ; r < N ; r ++){
-			for(int c = 0 ; c < N; c++){
-				System.out.print(map[r][c] + " ");
-			}
-			System.out.println();
 		}
 	}
 
@@ -101,26 +83,23 @@ public class 백준_2146번_다리만들기 {
 
 		loop1 :
 		while(!q2.isEmpty()){
-
 			int currIdx = q2.peek().idx;
 			while(!q2.isEmpty() && q2.peek().idx == currIdx){
 				q.offer(q2.poll());
 			}
-
 			int times = 0;
+
+			visited = new boolean[N][N];
 			while(!q.isEmpty()){
 				if(times ++ > minLen) {
 					q.clear();
 					break;
 				}
-				int size = q.size();
 
-				for(; size > 0; size--){
-					if(times == 1)  visited = new boolean[N][N];
-
+				for(int size = q.size(); size > 0; size--){
 					Node curr = q.poll();
 
-					for(int i = 0 ; i < 3 ; i++){
+					for(int i = 0 ; i < 4 ; i++){
 						int nr = curr.row + DIR[i][0];
 						int nc = curr.col + DIR[i][1];
 
@@ -129,8 +108,6 @@ public class 백준_2146번_다리만들기 {
 
 						if(map[nr][nc] != 0 && map[nr][nc] != -1 ){
 							q.clear();
-//							System.out.println(nr + ", " +  nc);
-//							System.out.println(map[nr][nc] + " |  " +  curr.idx + " | " + currIdx);
 							minLen = Math.min(times, minLen);
 							continue loop1;
 						}
