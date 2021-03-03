@@ -7,7 +7,7 @@ public class 백준_14425번_문자열집합 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 
-	static Map<String, Integer> map = new HashMap<>(10000);
+	static Set<String> set = new HashSet<>(10000);
 	static int N;
 	static int M;
 //	static String[] S;
@@ -22,7 +22,8 @@ public class 백준_14425번_문자열집합 {
 //			S[i] = br.readLine();
 //		}
 		for(int i = 0 ; i < N; i++) {
-			map.put(br.readLine(), i);
+//			map.put(br.readLine(), i);
+			set.add(br.readLine());
 		}
 	}
 
@@ -37,7 +38,7 @@ public class 백준_14425번_문자열집합 {
 //					break;
 //				}
 //			}
-			if(map.containsKey(str))    cnt++;
+			if(set.contains(str))    cnt++;
 		}
 		return cnt;
 	}

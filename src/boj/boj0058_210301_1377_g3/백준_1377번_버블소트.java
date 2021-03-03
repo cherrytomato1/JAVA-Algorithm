@@ -7,35 +7,29 @@ public class 백준_1377번_버블소트 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	static int N;
-	static int[] arr;
-	static int[] sortedArr;
+	static Integer[][] arr ;
 
 	static void init() throws IOException{
 		N = Integer.parseInt(br.readLine());
-		arr = new int[N + 1];
-//		sortedArr = new int[N + 1];
+		arr = new Integer[N][];
 
-		for(int i = 1 ; i <= N; i++){
-			arr[i] = Integer.parseInt(br.readLine());
+		for(int i = 0 ; i < N; i++){
+			arr[i] = new Integer[]{Integer.parseInt(br.readLine()), i};
 		}
-		sortedArr = Arrays.copyOf(arr,arr.length);
-		Arrays.sort(sortedArr);
+		Arrays.sort(arr, (o1, o2) -> o1[0] - o2[0]);
 	}
 
 	static int solve(){
-		int idx = 1;
-		for(int i = 1 ; i <= N ; i++){
-			if(sortedArr[idx] == arr[i]) idx++;
+		int ans = 0;
+
+		for(int i = 0 ; i < N; i++){
+			ans = Math.max(ans, arr[i][1] - i);
 		}
-		idx--;
-		System.out.println(Arrays.toString(sortedArr));
-		System.out.println("idx == " + idx + ", N ==" + N );
-		return sortedArr[idx];
+		return ans + 1;
 	}
 
 	public static void main(String[] args) throws IOException{
 		init();
 		System.out.println(solve());
 	}
-
 }
