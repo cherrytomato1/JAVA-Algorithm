@@ -1,6 +1,5 @@
 package boj.boj0060_210305_16113_s2;
 
-import java.util.*;
 import java.io.*;
 
 public class 백준_16113번_시그널 {
@@ -15,7 +14,6 @@ public class 백준_16113번_시그널 {
 		N = Integer.parseInt(br.readLine());
 		String str = br.readLine();
 
-//		N = str.length();
 		strArr = new String[N];
 		length = N/5;
 
