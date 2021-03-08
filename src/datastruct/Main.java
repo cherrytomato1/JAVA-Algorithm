@@ -16,7 +16,6 @@ public class Main {
 	static void BinarySearchTest(){
 		int[] arr = new int[EOK10/2];
 
-
 		for(int i = 0; i < EOK10/2; i++){
 			arr[i] = i;
 		}
@@ -33,10 +32,9 @@ public class Main {
 		System.out.println(end - start);
 
 		start = System.currentTimeMillis();
-		System.out.println(BinarySearch.BinarySearch(arr, val));
+		System.out.println(BinarySearch.binarySearch(arr, val));
 		end = System.currentTimeMillis();
 		System.out.println(end - start);
-
 	}
 
 	static void callStack(){

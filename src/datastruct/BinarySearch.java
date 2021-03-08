@@ -1,7 +1,7 @@
 package datastruct;
 
 public class BinarySearch {
-	public static int BinarySearch(int[] arr, int val){
+	public static int binarySearch(int[] arr, int val){
 		int low = 0;
 		int high = arr.length - 1;
 
