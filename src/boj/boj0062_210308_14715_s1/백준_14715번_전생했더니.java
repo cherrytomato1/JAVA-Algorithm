@@ -1,11 +1,11 @@
 package boj.boj0062_210308_14715_s1;
+
 import java.io.*;
 
 public class 백준_14715번_전생했더니 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	static int recur(int n, int cnt){
-		if(n == 2)  return cnt;
 		int max = (int)Math.sqrt(n);
 		int ret = Integer.MAX_VALUE;
 
