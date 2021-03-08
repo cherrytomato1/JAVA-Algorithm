@@ -15,10 +15,10 @@ public class 백준_6087_레이저통신 {
 		}
 	}
 
-	static final int[][] DIR = {{-1, 1, 0, 0}, {0, 0, -1, 1}};
-
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
+
+	static final int[][] DIR = {{-1, 1, 0, 0}, {0, 0, -1, 1}};
 
 	static int W;
 	static int H;
