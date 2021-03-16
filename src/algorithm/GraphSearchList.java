@@ -43,6 +43,13 @@ public class GraphSearchList {
 			int from = Integer.parseInt(st.nextToken());
 			int to = Integer.parseInt(st.nextToken());
 			System.out.println(from);
+
+			/*
+				1. 각 배열 레퍼런스는 해당 인접 리스트의 헤드이며 헤드 외 다른 노드들은 인접한 경우를 말함
+				2. 인접 리스트가 추가될 때마다 연결된 헤드에서부터 앞으로 넣는다
+				3. 현재 헤드가 가르키고 있는 값을 next로 갖는 새로운 노드를 만든 후 head로 만든다.
+				4. from 과 to 에 모두 적용한다.
+			 */
 			adjList[from] = new Node(to, adjList[from]);
 			adjList[to] = new Node(from, adjList[to]);
 		}

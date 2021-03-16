@@ -42,4 +42,13 @@ public class GraphSearchAdjMatrix {
 			}
 		}
 	}
+
+	static void dfs(int curr, int visited){
+		visited |= 1 << curr;
+
+		for(int i = 0 ; i < N ; i++){
+			if((visited & 1 << curr) != 0) continue;
+			dfs(i, visited);
+		}
+	}
 }
