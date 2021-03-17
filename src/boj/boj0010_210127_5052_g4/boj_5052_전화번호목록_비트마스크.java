@@ -1,9 +1,12 @@
-package boj.boj0010_210127_1717_g4;
+package boj.boj0010_210127_5052_g4;
 
 import java.util.*;
 import java.io.*;
 
-public class boj_1717_전화번호목록_비트마스크 {
+/*
+    Integer형으로하면 0 이 잘려버
+ */
+public class boj_5052_전화번호목록_비트마스크 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringBuilder sb = new StringBuilder();
 

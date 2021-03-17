@@ -1,11 +1,11 @@
-package boj.boj0010_210127_1717_g4;
+package boj.boj0010_210127_5052_g4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class boj_1717_전화번호목록 {
+public class boj_5052_전화번호목록 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringBuilder sb = new StringBuilder();
 
