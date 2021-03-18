@@ -5,7 +5,8 @@ import java.util.Arrays;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		unionTest();
+//		unionTest();
+		kruskalTest();
 	}
 	public static void graphTest() throws IOException{
 		GraphSearchList.in();
@@ -13,7 +14,7 @@ public class Main {
 		GraphSearchList.dfs(0, 0);
 	}
 	public static void unionTest(){
-		UnionFind uf = new UnionFind(10);
+		UnionFind uf = new UnionFind(10, new int[10]);
 		uf.union(0, 1);
 		uf.union(3, 5);
 		uf.union(0, 2);
@@ -23,5 +24,9 @@ public class Main {
 		System.out.println(Arrays.toString(uf.getParents()));
 		uf.find(5);
 		System.out.println(Arrays.toString(uf.getParents()));
+	}
+	public static void kruskalTest() throws IOException{
+		MST1_Kruskal krsk = new MST1_Kruskal();
+		System.out.println(krsk.kruskal());
 	}
 }

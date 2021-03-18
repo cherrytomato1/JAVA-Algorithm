@@ -7,16 +7,16 @@ public class UnionFind {
 	private int N;
 	private int parents[];
 
-	public UnionFind(int N){
+	public UnionFind(int N, int[] parents){
 		this.N = N;
-		parents = new int[N];
-		make(N);
+		this.parents = parents;
+		make();
 	}
 	/*
 		크기가 1인 단위 집합을 만든다.
 	 */
-	private void make(int size){
-		for(int i = 0 ; i < size; i++){
+	private void make(){
+		for(int i = 0 ; i < N; i++){
 			parents[i] = i;
 		}
 	}
