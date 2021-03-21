@@ -1,7 +1,5 @@
 package boj.boj0072_210319_10423_g2;
 
-import algorithm.MST1_Kruskal;
-
 import java.util.*;
 import java.io.*;
 
@@ -20,7 +18,6 @@ public class 백준_10423번_전기가부족해 {
 
 		@Override
 		public int compareTo(Object o){
-
 			return Integer.compare(this.weight, ((Edge)o).weight);
 		}
 	}
@@ -32,9 +29,8 @@ public class 백준_10423번_전기가부족해 {
 	private static int M;
 	private static int K;
 
-	private static boolean[] cities;
 	private static int[] p;
-	private static List<Edge> edges = new ArrayList<>();
+	private static Queue<Edge> edges = new PriorityQueue<>();
 
 	private static int find(int x){
 		if(p[x] == x)   return x;
@@ -44,7 +40,7 @@ public class 백준_10423번_전기가부족해 {
 	private static boolean union(int x, int y){
 		int parX = find(x);
 		int parY = find(y);
-		if(cities[parX] && cities[parY])    return false;
+		if(parX == parY)    return false;
 		p[parY] = parX;
 		return true;
 	}
@@ -56,14 +52,14 @@ public class 백준_10423번_전기가부족해 {
 		K = Integer.parseInt(st.nextToken());
 
 		p = new int[N + 1];
-		cities = new boolean[N + 1];
 		for(int i = 1 ; i <= N; i++){
 			p[i] = i;
 		}
 
 		st = new StringTokenizer(br.readLine());
-		for(int i = 0 ; i < K ; i++){
-			cities[Integer.parseInt(st.nextToken())] = true;
+		int prev = Integer.parseInt(st.nextToken());
+		for(int i = 1 ; i < K ; i++){
+			union(prev, Integer.parseInt(st.nextToken()));
 		}
 
 		for(int i = 0 ; i < M ; i++){
@@ -73,20 +69,21 @@ public class 백준_10423번_전기가부족해 {
 			int weight = Integer.parseInt(st.nextToken());
 			edges.add(new Edge(from, to, weight));
 		}
-		Collections.sort(edges);
 	}
 
 	private static int solve(){
-		int cnt = 0;
 		int ret = 0;
-		for(Edge edge : edges){
-			if(union(edge.from, edge.to)){
-				ret += edge.weight;
-				if(++cnt == N) break;
+		int cnt = 0;
+		while(!edges.isEmpty() && cnt != N){
+			Edge curr = edges.poll();
+			if(union(curr.from, curr.to)){
+				ret += curr.weight;
+				cnt++;
 			}
 		}
 		return ret;
 	}
+
 
 	public static void main(String[] args) throws IOException{
 		init();
