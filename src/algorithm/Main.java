@@ -6,8 +6,16 @@ import java.util.Arrays;
 public class Main {
 	public static void main(String[] args) throws IOException {
 //		unionTest();
-		kruskalTest();
+//		kruskalTest();
+		dijkstraTest();
 	}
+
+	private static void dijkstraTest() throws IOException{
+		Dijkstra dijk = new Dijkstra();
+		System.out.println(dijk.dijkstraTest());
+	}
+
+
 	public static void graphTest() throws IOException{
 		GraphSearchList.in();
 		GraphSearchList.bfs(0);

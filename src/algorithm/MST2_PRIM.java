@@ -11,6 +11,7 @@ public class MST2_PRIM {
 	private final int[][] arr;
 	private final boolean[] visited;
 	private final int[] minEdge;
+	//신장트리의 각 정점에서 자기 자신으로 연결하는 최소 간선 비용
 	private final BufferedReader br;
 
 	public MST2_PRIM() throws IOException {
@@ -41,18 +42,16 @@ public class MST2_PRIM {
 			int minVertex = 0;
 			//신장트리에 연결되지 않은 정점 중 minEdge비용이 최소인 정점
 			for(int i = 0 ; i < N; i++){
-				if(visited[i] || min <= minEdge[i]) {
-					min = minEdge[i];
-					minVertex = i;
-				}
+				if(visited[i] || min <= minEdge[i]) continue;
+				min = minEdge[i];
+				minVertex = i;
 			}
 			res += min;
 			visited[minVertex] = true;
 
 			for(int i = 0; i < N; i++){
-				if(!visited[i] && arr[minVertex][i] != 0 && minEdge[i] > arr[minVertex][i]){
-					minEdge[i] = arr[minVertex][i];
-				}
+				if(visited[i] || arr[minVertex][i] == 9 || minEdge[i] <= arr[minVertex][i])     continue;
+				minEdge[i] = arr[minVertex][i];
 			}
 		}
 		return res;
