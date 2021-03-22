@@ -46,8 +46,11 @@ public class Dijkstra {
 		int min = 0;
 		int curr = 0;
 
+		// O(N^2)
 		for(int i = 0 ; i < N ; i++){
-			//2.1 방문하지 않은 정점 중에서 최소 비용의 정점을 선택
+			//2.1 방문하지 않은 정점 중에서 출발지에서 최소 비용의 정점을 선택 (O(N))
+			//min heap(priority queue)를 통해서 출력할 수도 있음 (O(logN))
+
 			min = Integer.MAX_VALUE;
 			for(int j = 0; j < N ; j++){
 				if(visited[j] || dist[j] >= min)        continue;
