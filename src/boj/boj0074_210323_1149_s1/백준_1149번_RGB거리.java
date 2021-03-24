@@ -37,7 +37,6 @@ public class 백준_1149번_RGB거리 {
 		for(int i = 0 ; i < 3; i++){
 			ret = Math.min(d[N - 1][i], ret);
 		}
-
 		return ret;
 	}
 
