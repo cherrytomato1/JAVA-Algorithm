@@ -7,7 +7,13 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 //		unionTest();
 //		kruskalTest();
-		dijkstraTest();
+//		dijkstraTest();
+		dpTest();
+	}
+
+	private static void dpTest() {
+		DynamicProgramming dp = new DynamicProgramming(100);
+		System.out.println(dp.DPgo(60));
 	}
 
 	private static void dijkstraTest() throws IOException{
