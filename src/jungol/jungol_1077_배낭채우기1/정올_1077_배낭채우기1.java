@@ -24,8 +24,8 @@ public class 정올_1077_배낭채우기1 {
 			st = new StringTokenizer(br.readLine().trim());
 			int weight = Integer.parseInt(st.nextToken());
 			int value = Integer.parseInt(st.nextToken());
-			for(int j = 1; j <= W ; j++){
-				if(j >= weight)     d[j] = Math.max(d[j - weight] + value, d[j]);
+			for(int j = weight; j <= W ; j++){
+				d[j] = Math.max(d[j - weight] + value, d[j]);
 			}
 		}
 		return d[W];
