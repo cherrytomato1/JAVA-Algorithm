@@ -25,10 +25,7 @@ public class swea_3307_최장증가부분수열 {
 		int size = 0;
 		d[size] = arr[size++];
 		for( int i = 1 ; i < N; i++){
-//			int idx = Math.abs(binSearch(arr[i]));
 			int idx = Math.abs(binSearch(0, size, arr[i]));
-//			System.out.println(idx);
-//			idx = idx < 0 ? idx * -1 - 1 : idx;
 
 			d[idx] = arr[i];
 			if(idx == size) size++;
@@ -48,7 +45,6 @@ public class swea_3307_최장증가부분수열 {
 				high = mid - 1;
 			}
 		}
-//		return -(low + 1);
 		return -low;
 	}
 
