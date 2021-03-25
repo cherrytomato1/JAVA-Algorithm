@@ -1,14 +1,21 @@
 package algorithm;
 
-import java.io.IOException;
-import java.util.Arrays;
+import java.io.*;
+import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
 //		unionTest();
 //		kruskalTest();
 //		dijkstraTest();
-		dpTest();
+//		dpTest();
+		lisTest();
+	}
+
+	private static void lisTest() throws IOException{
+		LIS lis = new LIS();
+//		System.out.println(lis.getLIS());
+		System.out.println(lis.getLIS2BinarySearch());
 	}
 
 	private static void dpTest() {
