@@ -19,7 +19,6 @@ public class LIS {
 		}
 	}
 
-
 	//O(N^2) 이므로 N <= 10,000일 때만 가능
 	public int getLIS(){
 		int ret = 0;
@@ -35,7 +34,6 @@ public class LIS {
 
 	public int getLIS2BinarySearch(){
 		int size = 0;
-
 		LIS[size] = arr[size++];
 		for(int i = 1 ; i < N; i++){
 			//LIS 배열의 0번 인덱스부터 size 인덱스까지, arr[i]과 같은 값을 찾는다.
