@@ -50,7 +50,7 @@ public class MST2_PRIM {
 			visited[minVertex] = true;
 
 			for(int i = 0; i < N; i++){
-				if(visited[i] || arr[minVertex][i] == 9 || minEdge[i] <= arr[minVertex][i])     continue;
+				if(visited[i] || arr[minVertex][i] == 0 || minEdge[i] <= arr[minVertex][i])     continue;
 				minEdge[i] = arr[minVertex][i];
 			}
 		}
