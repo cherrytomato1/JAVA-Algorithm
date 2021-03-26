@@ -42,7 +42,6 @@ public class 백준_2469번_사다리타기 {
 			}
 		}
 
-
 		for(int i = 0; i < botLen; i++){
 			char[] line = br.readLine().toCharArray();
 			for(int j = 0 ; j < K - 1; j++){
@@ -80,13 +79,11 @@ public class 백준_2469번_사다리타기 {
 
 	private static char[] go(char[] start, boolean[][] map, int len){
 		char[] ret = Arrays.copyOf(start, start.length);
-
 		for(int i = 0; i < len; i++){
 			for(int j = 0 ; j < K - 1; j++){
 				if(map[i][j])   swapIdx(j, j + 1, ret);
 			}
 		}
-
 		return ret;
 	}
 
