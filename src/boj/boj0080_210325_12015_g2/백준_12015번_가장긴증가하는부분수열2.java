@@ -49,5 +49,6 @@ public class 백준_12015번_가장긴증가하는부분수열2 {
 	public static void main(String[] args) throws IOException{
 		init();
 		System.out.println(solve());
+//		System.out.println(Arrays.toString(arr));
 	}
 }
