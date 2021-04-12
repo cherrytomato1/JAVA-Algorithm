@@ -50,4 +50,8 @@ public class Main {
 		MST1_Kruskal krsk = new MST1_Kruskal();
 		System.out.println(krsk.kruskal());
 	}
+	public static void primTest() throws IOException{
+		MST2_PRIM prim = new MST2_PRIM();
+		System.out.println(prim.primPriorityQueue());
+	}
 }
