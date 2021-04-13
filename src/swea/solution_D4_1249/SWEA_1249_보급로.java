@@ -41,7 +41,6 @@ public class SWEA_1249_보급로 {
 		q.add(new Pos(0, 0, 0));
 		while (!q.isEmpty()){
 			Pos curr = q.poll();
-			if(curr.row == N - 1 && curr.col == N - 1)
 			for (int i = 0; i < 4 ; i++) {
 				int nr = curr.row + DIR[0][i];
 				int nc = curr.col + DIR[1][i];
