@@ -3,7 +3,7 @@ package boj.boj0107_210412_16946_g2;
 import java.io.*;
 import java.util.*;
 
-public class 시간초과 {
+public class 백준_16946_벽부수고이동하기4_빠름 {
 	private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	private static StringTokenizer st;
 
