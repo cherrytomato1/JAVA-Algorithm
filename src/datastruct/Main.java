@@ -32,7 +32,7 @@ public class Main {
 		System.out.println(end - start);
 
 		start = System.currentTimeMillis();
-		System.out.println(BinarySearch.binarySearch(arr, val));
+//		System.out.println(BinarySearch.binarySearch(arr, val));
 		end = System.currentTimeMillis();
 		System.out.println(end - start);
 	}
