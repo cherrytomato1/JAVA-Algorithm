@@ -99,7 +99,7 @@ public class 백준_17825번_주사위윷놀이 {
 			int tempIdx = pieces[i];
 			int score = move(i, orders[orderIdx]);
 			if(score == FAIL)   continue;
-			score = score == -1 ? 0 : score;
+			score = score == GOAL ? 0 : score;
 			ret = Math.max(dfs(orderIdx + 1, totalScore + score), ret);
 			pieces[i] = tempIdx;
 		}
