@@ -7,7 +7,7 @@ public class 백준_1256번_사전 {
 	private static long d[][];
 	private static int N;
 	private static int M;
-	private static long K;
+	private static Long K;
 
 	public static void main(String[] args) throws IOException{
 		init();
