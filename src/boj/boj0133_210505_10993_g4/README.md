@@ -1,6 +1,6 @@
 ## 문제 정의
 
-1. [문제](https://www.acmicpc.net/problem/10993](https://www.acmicpc.net/problem/10993) 의 규칙에 맞게 별을 찍어봅니다.
+1. [문제](https://www.acmicpc.net/problem/10993) 의 규칙에 맞게 별을 찍어봅니다.
 2. `f(1)` 일때 `*` 이며 `f(N)` 일 때 `f(N-1)` 의 모양을 모두 가둘 수 있는 `f(N - 1)` 과 반대방향인 삼각형을 외부에 추가로 그립니다.
 
 ## 문제
