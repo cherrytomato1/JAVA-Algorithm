@@ -13,8 +13,7 @@ public class 백준_8913_문자열뽑기 {
 		StringBuilder sb = new StringBuilder();
 		while (T-- > 0) {
 			init();
-			sb.append(recur(0) ? 1 : 0);
-			sb.append("\n");
+			sb.append(recur(0) ? 1 : 0).append("\n");
 		}
 		System.out.print(sb);
 	}
@@ -29,7 +28,7 @@ public class 백준_8913_문자열뽑기 {
 		if (flag == flagMax)    return true;
 
 		for (int i = 0; i < length; i++) {
-			if((flag & 1 << i) != 0)    continue;
+			if((flag & 1 << i) != 0)        continue;
 			int nextFlag = flag;
 
 			int j = i + 1;
@@ -39,7 +38,7 @@ public class 백준_8913_문자열뽑기 {
 				nextFlag |= 1 << j;
 			}
 
-			if(nextFlag == flag)    continue;
+			if(nextFlag == flag)                  continue;
 			if(recur(nextFlag | 1 << i))    return true;
 			i = j - 1;
 		}
