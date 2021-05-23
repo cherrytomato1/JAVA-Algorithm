@@ -25,7 +25,6 @@ public class 백준_1715번_카드정렬하기 {
 		long ret = 0;
 		while (pq.size() > 1) {
 			int val = pq.poll() + pq.poll();
-			ret += val;
 			pq.offer(val);
 		}
 		return ret;

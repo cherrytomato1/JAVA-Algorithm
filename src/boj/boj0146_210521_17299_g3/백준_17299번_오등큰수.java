@@ -51,3 +51,7 @@ public class 백준_17299번_오등큰수 {
 		System.out.println(sb);
 	}
 }
+/*
+8
+1 3 2 4 2 5 5 5
+ */
