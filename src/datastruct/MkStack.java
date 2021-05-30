@@ -1,34 +1,47 @@
 package datastruct;
 
-public class MkStack {
-	private final int[] stk;
+public class MkStack <T> {
+	private T[] stk;
 	private int top;
-	private final int size;
+	private int size;
 
-	public MkStack(int size){
-		this.size = size;
-		top = 0;
-		stk = new int[size];
+	public MkStack() {
+		super();
+		top = -1;
+		size = 1;
+		stk = (T[])new Object[size];
 	}
 
-	public int peek(){
+	public MkStack(int size){
+		this();
+		this.size = size;
+	}
+
+	public T peek(){
 		return this.stk[top];
 	}
 
-	public boolean push(int o){
-		if(top == size - 1) return false;
-		stk[++top] = o;
+	public boolean push(T t){
+		if(top == size - 1) increaseSize();
+		stk[++top] = t;
 		return true;
 	}
 
-	public Object pop(){
-		if(top == -1)   return null;
-		Object O = stk[top];
-		stk[top--] = 0;
-		return O;
+	public void increaseSize(){
+		T[] newStk = (T[])new Object[size * 2];
+		for (int i = 0; i < size ; i++) {
+			newStk[i] = stk[i];
+		}
+		size *= 2;
+		stk = newStk;
+	}
+
+	public T pop(){
+		if(isEmpty())   return null;
+		return stk[top--];
 	}
 
 	public boolean isEmpty(){
-		return top == 0;
+		return top == -1;
 	}
 }

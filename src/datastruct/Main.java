@@ -10,35 +10,69 @@ public class Main {
 
 	public static void main(String[] args) {
 //		callStack();
-		BinarySearchTest();
+		linkedListTest();
+
 	}
 
-	static void BinarySearchTest(){
-		int[] arr = new int[EOK10/2];
-
-		for(int i = 0; i < EOK10/2; i++){
-			arr[i] = i;
+	private static void linkedListTest() {
+		MkLinkedList<Integer> list = new MkLinkedList<>();
+		//머리에 추가하기
+		System.out.println("size : " + list.size());
+		for (int i = 0; i < 10; i++) {
+			list.addFirst(i);
+			System.out.println("add first : " + i + " size = " + list.size());
 		}
+		//모두 출력하기
+		getAllListItems(list);
 
-		int val = EOK * 4;
-		long start = System.currentTimeMillis();
-		for(int i = 0; i < EOK10/2; i++){
-			if (arr[i] == val) {
-				System.out.println(i);
-				break;
-			}
+		//모두 비우기
+		list.clear();
+		System.out.println("size : " + list.size());
+
+		//꼬리에 추가하기
+		for (int i = 0; i < 10; i++) {
+			list.addLast(i);
+			System.out.println("add last : " + i + " size = " + list.size());
 		}
-		long end = System.currentTimeMillis();
-		System.out.println(end - start);
+		getAllListItems(list);
 
-		start = System.currentTimeMillis();
-//		System.out.println(BinarySearch.binarySearch(arr, val));
-		end = System.currentTimeMillis();
-		System.out.println(end - start);
+		//중간에 추가하기
+		for (int i = 9; i > 0  ; i--) {
+			list.add(i, i * 10);
+			System.out.println("add idx : " + i + " size = " + list.size());
+		}
+		getAllListItems(list);
+
+		//머리 지우기
+		for (int i = 0; i < 5 ; i++) {
+			list.removeFirst();
+		}
+		getAllListItems(list);
+
+		//꼬리 지우기
+		for (int i = 0; i < 5 ; i++) {
+			list.removeLast();
+		}
+		getAllListItems(list);
+
+		//허리 지우기
+		for (int i = 1; i < 7 ; i+=2) {
+			list.remove(i);
+		}
+		getAllListItems(list);
 	}
+
+	private static void getAllListItems(MkLinkedList<Integer> list) {
+		System.out.print("리스트 순회 :");
+		for (int i = 0; i < list.size() ; i++) {
+			System.out.print(list.get(i) + " ");
+		}
+		System.out.println();
+	}
+
 
 	static void callStack(){
-		MkStack stk = new MkStack(10);
+		MkStack<Integer> stk = new MkStack<>(10);
 		Stack<Integer> stk2 = new Stack<>();
 		ArrayDeque<Integer> stk3 = new ArrayDeque<>();
 

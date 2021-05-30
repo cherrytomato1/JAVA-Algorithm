@@ -15,6 +15,8 @@ public class 백준_16234번_인구이동 {
 
 	public static void main(String[] args) throws IOException{
 		init();
+		int a;
+		int b = a = 5 + 5;
 		System.out.println(solve());
 	}
 

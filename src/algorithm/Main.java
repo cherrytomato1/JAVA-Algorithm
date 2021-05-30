@@ -10,6 +10,33 @@ public class Main {
 //		dijkstraTest();
 //		dpTest();
 		lisTest();
+		BinarySearchTest();
+	}
+
+	static void BinarySearchTest(){
+		final int EOK = 100_000_000;
+		final int EOK10 = 1_000_000_000;
+		int[] arr = new int[EOK10/2];
+
+		for(int i = 0; i < EOK10/2; i++){
+			arr[i] = i;
+		}
+
+		int val = EOK * 4;
+		long start = System.currentTimeMillis();
+		for(int i = 0; i < EOK10/2; i++){
+			if (arr[i] == val) {
+				System.out.println(i);
+				break;
+			}
+		}
+		long end = System.currentTimeMillis();
+		System.out.println(end - start);
+
+		start = System.currentTimeMillis();
+//		System.out.println(BinarySearch.binarySearch(arr, val));
+		end = System.currentTimeMillis();
+		System.out.println(end - start);
 	}
 
 	private static void lisTest() throws IOException{
