@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main {
+public class myProblem.Elevator {
     static int[][] map;
     static int row;
     static int col;

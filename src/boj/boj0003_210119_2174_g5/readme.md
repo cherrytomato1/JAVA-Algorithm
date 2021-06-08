@@ -75,7 +75,7 @@ class Robot{
     }
 }
 
-public class Main {
+public class myProblem.Elevator {
     static int rtnDir(char dir){
         switch (dir){
             case 'N' : return 2;

@@ -30,7 +30,7 @@ package a0005_210125_14719_g5;
 
 import java.util.Scanner;
 
-public class Main {
+public class myProblem.Elevator {
     static boolean[][] map;                     //벽의 위치를 표시할 맵
     static int answer;                          //제출 답
     public static void main(String[] args) {

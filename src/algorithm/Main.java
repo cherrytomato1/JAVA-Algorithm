@@ -4,6 +4,19 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+	private static class MyClass {
+		int a;
+		public MyClass() {
+			System.out.println("ㅅㅐㅇ성자 실행");
+			this.myMethod();
+		}
+
+		public void myMethod() {
+			System.out.println("메서드 수행");
+		}
+	}
+
+
 	public static void main(String[] args) throws IOException {
 //		unionTest();
 //		kruskalTest();
@@ -12,6 +25,7 @@ public class Main {
 		lisTest();
 		BinarySearchTest();
 	}
+
 
 	static void BinarySearchTest(){
 		final int EOK = 100_000_000;

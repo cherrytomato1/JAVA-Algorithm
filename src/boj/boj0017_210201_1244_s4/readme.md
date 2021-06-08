@@ -13,7 +13,7 @@ package boj0017_210201_1244_s4;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Main {
+public class myProblem.Elevator {
     static int N;
     static int M;
     static boolean[] arr;

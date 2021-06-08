@@ -74,7 +74,7 @@ package boj.boj0025_210209_7576_s1;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class myProblem.Elevator {
 
 	static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;

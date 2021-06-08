@@ -17,7 +17,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class myProblem.Elevator {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static int N;
     static int[] tower;
