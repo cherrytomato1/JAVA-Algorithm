@@ -1,5 +1,7 @@
 package algorithm;
 
+import algorithm.sort.MergeSort;
+
 import java.io.*;
 import java.util.*;
 
@@ -22,8 +24,17 @@ public class Main {
 //		kruskalTest();
 //		dijkstraTest();
 //		dpTest();
-		lisTest();
-		BinarySearchTest();
+//		lisTest();
+
+//		BinarySearchTest();
+
+		int[] arr = new int[10];
+		for (int i = 0; i < 10 ; i++) {
+			arr[i] = Math.abs(i - 10);
+		}
+		System.out.println(Arrays.toString(arr));
+		MergeSort.mergeSort(arr);
+		System.out.println(Arrays.toString(arr));
 	}
 
 
