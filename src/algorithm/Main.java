@@ -6,20 +6,109 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	private static class MyClass {
-		int a;
-		public MyClass() {
-			System.out.println("ㅅㅐㅇ성자 실행");
-			this.myMethod();
+	private static class Fruit {
+		int value;
+
+		@Override
+		public Object clone() throws CloneNotSupportedException{
+			Object clone = super.clone();
+			return clone;
 		}
 
-		public void myMethod() {
-			System.out.println("메서드 수행");
+	}
+
+	private static class Apple extends Fruit implements Cloneable {
+		@Override
+		public Apple clone() throws CloneNotSupportedException{
+			Apple clone = (Apple)super.clone();
+			return clone;
+		}
+	}
+
+	public class UserException extends RuntimeException{
+		public UserException(String msg){
+			super(msg);
+		}
+	}
+
+	public class SearchException extends RuntimeException{
+		public SearchException(String msg){
+			super(msg);
 		}
 	}
 
 
-	public static void main(String[] args) throws IOException {
+
+	@FunctionalInterface
+	static interface Test {
+//		int test(int t);
+//		int test(int t, int v);
+//		boolean equals(Object obj);
+		int hashCode();
+
+		String toString();
+		Object clone() throws CloneNotSupportedException;
+//		int hashhash();
+	}
+
+	private class LoginExcpetion extends IOException{
+		public LoginExcpetion(String msg) {
+			super(msg);
+		}
+	}
+
+	public void myService(String param){
+		try{
+			switch(param){
+				case "login" :
+					login();
+					break;
+				case "register" :
+					register();
+					break;
+				case "search" :
+					search();
+					break;
+			}
+		} catch(UserException e){
+			e.printStackTrace();
+//			UserExceptionHandler(e);
+		} catch(SearchException e){
+			e.printStackTrace();
+//			SearchExceptionHandler(e);
+		}
+	}
+
+	private void login(){
+		try{
+			//..
+		} catch(Exception e){
+			throw new UserException("로그인 예외");
+		}
+	}
+
+	private void register(){
+		try{
+			//..
+		} catch(Exception e){
+			throw new UserException("등록 예외");
+		}
+	}
+
+	private void search(){
+		try{
+			//..
+		} catch(Exception e){
+			throw new SearchException("검색 예외");
+		}
+	}
+
+
+
+
+
+
+	public static void main(String[] args) {
 //		unionTest();
 //		kruskalTest();
 //		dijkstraTest();
@@ -27,6 +116,9 @@ public class Main {
 //		lisTest();
 
 //		BinarySearchTest();
+		Object O = new Object();
+		Fruit m = new Fruit();
+
 
 		int[] arr = new int[10];
 		for (int i = 0; i < 10 ; i++) {
@@ -35,6 +127,14 @@ public class Main {
 		System.out.println(Arrays.toString(arr));
 		MergeSort.mergeSort(arr);
 		System.out.println(Arrays.toString(arr));
+
+		try{
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			String str = br.readLine();
+		} catch(IOException e){
+			throw new RuntimeException("예외 발생 !");
+		}
+
 	}
 
 
