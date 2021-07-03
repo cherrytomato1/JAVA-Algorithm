@@ -13,7 +13,7 @@ public class 백준_16120번_PPAP {
 
 	private static void init() throws IOException {
 		final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		in = br.readLine().toCharArray();11
+		in = br.readLine().toCharArray();
 	}
 
 	private static boolean solve() {
