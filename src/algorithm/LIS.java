@@ -38,7 +38,7 @@ public class LIS {
 		for(int i = 1 ; i < N; i++){
 			//LIS 배열의 0번 인덱스부터 size 인덱스까지, arr[i]과 같은 값을 찾는다.
 			//binarySearch 같은 경우 찾으면 해당 데이터 index, 못 찾으면 음수 값으로 마지막 까지 찾은 위치
-			int temp = myBinarySearch.binarySearch(LIS, 0, size,  arr[i]);
+			int temp = MyBinarySearch.binarySearch(LIS, 0, size,  arr[i]);
 			temp = temp >= 0 ? temp : temp * -1 -1;
 
 			LIS[temp] = arr[i];

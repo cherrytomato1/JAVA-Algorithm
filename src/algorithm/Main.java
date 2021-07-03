@@ -6,105 +6,6 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	private static class Fruit {
-		int value;
-
-		@Override
-		public Object clone() throws CloneNotSupportedException{
-			Object clone = super.clone();
-			return clone;
-		}
-
-	}
-
-	private static class Apple extends Fruit implements Cloneable {
-		@Override
-		public Apple clone() throws CloneNotSupportedException{
-			Apple clone = (Apple)super.clone();
-			return clone;
-		}
-	}
-
-	public class UserException extends RuntimeException{
-		public UserException(String msg){
-			super(msg);
-		}
-	}
-
-	public class SearchException extends RuntimeException{
-		public SearchException(String msg){
-			super(msg);
-		}
-	}
-
-
-
-	@FunctionalInterface
-	static interface Test {
-//		int test(int t);
-//		int test(int t, int v);
-//		boolean equals(Object obj);
-		int hashCode();
-
-		String toString();
-		Object clone() throws CloneNotSupportedException;
-//		int hashhash();
-	}
-
-	private class LoginExcpetion extends IOException{
-		public LoginExcpetion(String msg) {
-			super(msg);
-		}
-	}
-
-	public void myService(String param){
-		try{
-			switch(param){
-				case "login" :
-					login();
-					break;
-				case "register" :
-					register();
-					break;
-				case "search" :
-					search();
-					break;
-			}
-		} catch(UserException e){
-			e.printStackTrace();
-//			UserExceptionHandler(e);
-		} catch(SearchException e){
-			e.printStackTrace();
-//			SearchExceptionHandler(e);
-		}
-	}
-
-	private void login(){
-		try{
-			//..
-		} catch(Exception e){
-			throw new UserException("로그인 예외");
-		}
-	}
-
-	private void register(){
-		try{
-			//..
-		} catch(Exception e){
-			throw new UserException("등록 예외");
-		}
-	}
-
-	private void search(){
-		try{
-			//..
-		} catch(Exception e){
-			throw new SearchException("검색 예외");
-		}
-	}
-
-
-
 
 
 
@@ -115,11 +16,12 @@ public class Main {
 //		dpTest();
 //		lisTest();
 
-//		BinarySearchTest();
-		Object O = new Object();
-		Fruit m = new Fruit();
+		BinarySearchTest();
+
+	}
 
 
+	static void mergeSortTest() {
 		int[] arr = new int[10];
 		for (int i = 0; i < 10 ; i++) {
 			arr[i] = Math.abs(i - 10);
@@ -127,41 +29,55 @@ public class Main {
 		System.out.println(Arrays.toString(arr));
 		MergeSort.mergeSort(arr);
 		System.out.println(Arrays.toString(arr));
-
-		try{
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			String str = br.readLine();
-		} catch(IOException e){
-			throw new RuntimeException("예외 발생 !");
-		}
-
 	}
 
-
 	static void BinarySearchTest(){
-		final int EOK = 100_000_000;
-		final int EOK10 = 1_000_000_000;
-		int[] arr = new int[EOK10/2];
 
-		for(int i = 0; i < EOK10/2; i++){
+		//6억 배열 선언
+		final int arraySize = 600_000_000;
+		int[] arr = new int[arraySize];
+
+		for(int i = 0; i < arr.length; i++){
 			arr[i] = i;
 		}
 
-		int val = EOK * 4;
+		//4.5억을 가르키고 있는 인덱스 값 찾기
+		int targetVal = 450_000_000;
+
 		long start = System.currentTimeMillis();
-		for(int i = 0; i < EOK10/2; i++){
-			if (arr[i] == val) {
-				System.out.println(i);
+		//선형 탐색
+		for(int i = 0; i < arr.length; i++){
+			if (arr[i] == targetVal) {
+				System.out.println("탐색 성공! 인덱스 : " + i);
 				break;
 			}
 		}
 		long end = System.currentTimeMillis();
-		System.out.println(end - start);
+		//선형 탐색 수행시간 출력
+		System.out.println("수행시간 : " + (end - start));
 
 		start = System.currentTimeMillis();
-//		System.out.println(BinarySearch.binarySearch(arr, val));
+		//이진 탐색
+		System.out.println("탐색 성공! 인덱스 : " + MyBinarySearch.binarySearch(arr, 0, arr.length - 1, targetVal));
 		end = System.currentTimeMillis();
-		System.out.println(end - start);
+
+		//이진 탐색 수행시간 출력
+		System.out.println("수행시간 : " + (end - start));
+
+
+		targetVal = 5;
+		for (int i = 0; i < arr.length ; i++) {
+			arr[i] = i/3;
+		}
+		for (int i = 0; arr[i] <= 7 ; i++) {
+			System.out.print("[" + arr[i] + "], ");
+		}
+		System.out.println();
+
+		//각각의 결과 확인
+		System.out.println(MyBinarySearch.binarySearch(arr, 0, arr.length - 1, targetVal));
+		System.out.println(MyBinarySearch.lowerBound(arr, 0, arr.length - 1, targetVal));
+		System.out.println(MyBinarySearch.upperBound(arr, 0, arr.length - 1, targetVal));
 	}
 
 	private static void lisTest() throws IOException{
