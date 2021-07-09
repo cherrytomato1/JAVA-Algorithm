@@ -16,8 +16,19 @@ public class Main {
 //		dpTest();
 //		lisTest();
 
-		BinarySearchTest();
+//		BinarySearchTest();
+		trieTest();
+	}
 
+	static void trieTest() {
+		Trie trie = new Trie();
+		System.out.println(trie.contains("Test"));
+		trie.insertNode("Test");
+		System.out.println(trie.contains("Test"));
+		System.out.println(trie.contains("Tes"));
+		trie.insertNode("Te");
+		System.out.println(trie.contains("Tes"));
+		System.out.println(trie.contains("Te"));
 	}
 
 
