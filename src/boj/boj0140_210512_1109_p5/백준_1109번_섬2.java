@@ -1,19 +1,24 @@
 package boj.boj0140_210512_1109_p5;
 
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
-public class 백준_1109번_섬 {
+public class 백준_1109번_섬2 {
 	private static class Pos {
+		int idx;
 		int row;
 		int col;
 		public Pos(int row, int col) {
 			this.row = row;
 			this.col = col;
 		}
+
+		public Pos(int row, int col, int idx) {
+			this.idx = idx;
+			this.row = row;
+			this.col = col;
+		}
 	}
-
-
 	private static final int[][] DIR = {{-1, 1, 0, 0, -1, -1, 1, 1}, {0, 0, -1, 1, -1, 1, -1, 1}};
 	private static final int ROW = 0;
 	private static final int COL = 1;
@@ -21,8 +26,9 @@ public class 백준_1109번_섬 {
 	private static int N;
 	private static int M;
 	private static int[][] map;
-//	private static int[] countOfDepth;
-	private static List<List<Integer>> childList;
+	private static int[] parents;
+
+	private static List<Pos> islandList;
 
 	public static void main(String[] args) throws IOException{
 		init();
@@ -30,19 +36,13 @@ public class 백준_1109번_섬 {
 			System.out.println("-1");
 			return;
 		}
-
-		for (int i = 1; i < childList.size(); i++){
-			findChildIsland(i);
-		}
-
-		int[] depth = new int[childList.size()];
-		int maxDepth = 0;
-		for (int i = 2; i < childList.size(); i++) {
-			maxDepth = Math.max(findChildDepth(i, depth), maxDepth);
-		}
-
-		System.out.println(getCountOfDepthToString(depth, maxDepth));
 //		printMap();
+		islandList.forEach(island -> findParentIsland(island));
+
+		int[] islandDepth = new int[parents.length];
+		int maxDepth = setIslandDepth(islandDepth);
+		System.out.println(getCountOfDepthToString(islandDepth, maxDepth));
+//		System.out.println(Arrays.toString(parents));
 	}
 
 	private static void printMap() {
@@ -62,32 +62,32 @@ public class 백준_1109번_섬 {
 		M = Integer.parseInt(st.nextToken());
 
 		map = new int[N][M];
-		childList = new ArrayList<>();
+
+		islandList = new LinkedList<>();
 
 		for (int i = 0; i < N ; i++) {
 			char[] in = br.readLine().toCharArray();
 			for (int j = 0; j < M ; j++) {
-				map[i][j] = in[j] == 'x' ? 100 : 0;
+				map[i][j] = in[j] == 'x' ? 'x' : 0;
 			}
 		}
 	}
 
 	private static boolean setIslandNo(){
 		int idx = 1;
-		childList.add(null);
-		childList.add(new ArrayList<>());
-
 		for (int r = 0; r < N ; r++) {
 			for (int c = 0; c < M ; c++) {
-				if(map[r][c] != 100)    continue;
-				setIslandNo(++idx, new Pos(r, c));
-				childList.add(new ArrayList<>());
+				if(map[r][c] != 'x')    continue;
+				setIslandNo(idx, new Pos(r, c, idx++));
 			}
 		}
+		parents = new int[idx];
 		return idx != 1;
 	}
 
 	private static void setIslandNo(int idx, Pos pos) {
+		islandList.add(pos);
+
 		Queue<Pos> q = new ArrayDeque<>();
 		q.offer(pos);
 		map[pos.row][pos.col] = idx;
@@ -96,7 +96,7 @@ public class 백준_1109번_섬 {
 			for (int i = 0; i < 8 ; i++) {
 				int nr = curr.row + DIR[ROW][i];
 				int nc = curr.col + DIR[COL][i];
-				if(nr < 0 || nr >= N || nc < 0 || nc >= M || map[nr][nc] != 100)    continue;
+				if(nr < 0 || nr >= N || nc < 0 || nc >= M || map[nr][nc] != 'x')    continue;
 				map[nr][nc] = idx;
 				q.offer(new Pos(nr, nc));
 			}
@@ -104,14 +104,14 @@ public class 백준_1109번_섬 {
 	}
 
 
-	private static void findChildIsland(int islandIdx) {
-		Queue<Pos> q = setQueue(islandIdx);
+	private static void findParentIsland(Pos pos) {
+		int[] islandCount = new int[islandList.size() + 1];
+		boolean[][] visited = new boolean[N][M];
+//		System.out.println("find");
 
-		Set<Integer> childSet = new HashSet<>();
-
-		if(islandIdx == 1 && q.isEmpty())   {
-			addChild(childSet, map[0][0], islandIdx);
-		}
+		Queue<Pos> q = new ArrayDeque<>();
+		q.offer(pos);
+		visited[pos.row][pos.col] = true;
 
 		while (!q.isEmpty()){
 			Pos curr = q.poll();
@@ -120,56 +120,46 @@ public class 백준_1109번_섬 {
 				int nr = curr.row + DIR[ROW][i];
 				int nc = curr.col + DIR[COL][i];
 
-				if(nr < 0 || nr >= N || nc < 0 || nc >= M)      continue;
-				if(map[nr][nc] < 0 || map[nr][nc] == islandIdx) continue;
-				addChild(childSet, map[nr][nc], islandIdx);
-
-				if(map[nr][nc] != 0)    continue;
-				map[nr][nc] = -1;
+				if(nr < 0 || nr >= N || nc < 0 || nc >= M)      return;
+				if(visited[nr][nc])   continue;
+				visited[nr][nc] = true;
+				if(map[nr][nc] != pos.idx && map[nr][nc] != 0) {
+					islandCount[map[nr][nc]]++;
+					continue;
+				}
 				q.offer(new Pos(nr, nc));
 			}
 		}
+//		System.out.println("go");
+		int maxCount = 0;
+		int parentsIsland = 0;
+		for (int i = 1; i < islandCount.length; i++) {
+			if(islandCount[i] < maxCount)  continue;
 
-		for (int child : childSet) {
-			childList.get(islandIdx).add(child);
+			maxCount = islandCount[i];
+			parentsIsland = i;
 		}
+		parents[pos.idx] = parentsIsland;
 	}
 
-	private static Queue<Pos> setQueue(int idx) {
-		Queue<Pos> q = new ArrayDeque<>();
+	private static int setIslandDepth(int[] islandDepth) {
+		int maxDepth = 0;
+		for (int i = 1; i < islandDepth.length ; i++) {
+			setIslandDepth(i, 0, islandDepth);
+		}
 
-		if (idx == 1) {
-			for (int r = 0; r < N ; r++) {
-				if(map[r][0] == 0)      q.offer(new Pos(r, 0));
-				if(map[r][M - 1] == 0)  q.offer(new Pos(r, M - 1));
-			}
-			for (int c = 0; c < M; c++) {
-				if(map[0][c] == 0)      q.offer(new Pos(0, c));
-				if(map[N - 1][c] == 0)  q.offer(new Pos(N - 1, c));
-			}
-			return q;
+		for (int i = 1; i < islandDepth.length ; i++) {
+			maxDepth = Math.max(maxDepth, islandDepth[i]);
 		}
-		for (int r = 0; r < N ; r++) {
-			for (int c = 0; c < M ; c++) {
-				if (map[r][c] == idx)   q.offer(new Pos(r, c));
-			}
-		}
-		return q;
+
+		return maxDepth;
 	}
 
-	private static void addChild(Set<Integer> set, int val, int idx) {
-		if(val <= 0 || val == idx)  return;
-		set.add(val);
-	}
+	private static void setIslandDepth(int idx, int depth, int[] islandDepth) {
+		islandDepth[idx] = Math.max(islandDepth[idx], depth);
+		if(parents[idx] == 0)       return;
 
-	private static int findChildDepth(int idx, int[] depth) {
-		if(depth[idx] != 0)     return depth[idx];
-		if(childList.get(idx).isEmpty())       return depth[idx] = 0;
-		for (int i : childList.get(idx)) {
-//			System.out.println(i);
-			depth[idx] = Math.max(depth[idx], findChildDepth(i, depth) + 1);
-		}
-		return depth[idx];
+		setIslandDepth(parents[idx], depth + 1, islandDepth);
 	}
 
 	private static String getCountOfDepthToString(int[] islandDepth, int maxDepth) {
@@ -177,7 +167,7 @@ public class 백준_1109번_섬 {
 		for (int depth : islandDepth ) {
 			countOfDepth[depth]++;
 		}
-		countOfDepth[0] -= 2;
+		countOfDepth[0]--;
 
 		StringBuilder sb = new StringBuilder();
 		for (int j : countOfDepth) {
@@ -262,7 +252,7 @@ x.x...x.x
 x.xxxxx.x
 x.......x
 xxxxxxxxx
-2 1 1
+1 1 1
 
 1 1
 x
@@ -530,57 +520,4 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-50 50
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-x................................................x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x.x...x...x...x...x...x...x...x...x...x...x....x.x
-x...x...x...x...x...x...x...x...x...x...x...x....x
-x................................................x
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
  */
