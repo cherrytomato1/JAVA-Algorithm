@@ -5,8 +5,8 @@ import algorithm.sort.MergeSort;
 import java.io.*;
 import java.util.*;
 
-public class Main {
 
+public class Main {
 
 
 	public static void main(String[] args) {
@@ -17,7 +17,21 @@ public class Main {
 //		lisTest();
 
 //		BinarySearchTest();
-		trieTest();
+//		/trieTest();
+
+	}
+
+	static void enumTest() {
+		System.out.println(Food.CAKE.ordinal());
+		System.out.println(Food.values().getClass());
+
+		Food food = Food.CAKE;
+		switch (food) {
+			case CAKE: //...
+			case PIZZA: //...
+			case COOKIE: //...
+		}
+		EnumSet enumSet = EnumSet.noneOf(Food.class);
 	}
 
 	static void trieTest() {

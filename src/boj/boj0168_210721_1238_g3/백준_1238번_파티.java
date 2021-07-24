@@ -3,6 +3,7 @@ package boj.boj0168_210721_1238_g3;
 import java.util.*;
 import java.io.*;
 
+
 public class 백준_1238번_파티 {
 	private static class Edge implements Comparable<Edge> {
 		int to;
