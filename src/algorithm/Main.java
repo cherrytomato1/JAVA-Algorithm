@@ -21,6 +21,10 @@ public class Main {
 
 	}
 
+	public <T extends Collections> void test(List<T> testList) {
+
+	}
+
 	static void enumTest() {
 		System.out.println(Food.CAKE.ordinal());
 		System.out.println(Food.values().getClass());
