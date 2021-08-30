@@ -1,4 +1,4 @@
-package programmers.메뉴리뉴얼;
+package programmers.메뉴리뉴얼_LV2;
 
 import java.util.*;
 
