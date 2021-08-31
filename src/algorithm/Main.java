@@ -19,6 +19,55 @@ public class Main {
 //		BinarySearchTest();
 //		/trieTest();
 
+		Integer[] arr = {1,2,3};
+		Arrays.sort(arr, new Comparator<Integer>(){
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return Integer.compare(o1, o2);
+			}
+		});
+
+
+
+
+
+		Comparator<Integer> comparator = (o1, o2) -> Integer.compare(o1, o2);
+
+
+
+
+
+
+
+
+
+		Arrays.sort(arr, (o1, o2) -> Integer.compare(o1, o2));
+
+
+
+
+
+
+
+
+
+		Tetst t = (o1, o2) -> o1 + o2;
+	}
+
+//	@FunctionalInterface
+	public interface Tetst {
+		int add(int a, int b);
+
+//		int sub();
+
+		@Override
+		boolean equals(Object o);
+
+		int hashCode();
+
+//		static int adder(int a, int b){
+//			return a + b;
+//		}
 	}
 
 	public <T extends Collections> void test(List<T> testList) {
