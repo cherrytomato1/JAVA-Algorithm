@@ -1,8 +1,5 @@
 # 🏠 자바 알고리즘
 
-## 🪜 자료구조
-
-
 ## 📱 백준
 [![Solved.ac프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=terec)](https://solved.ac/terec)
 
