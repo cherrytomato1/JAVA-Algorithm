@@ -39,7 +39,7 @@ public class MyBinarySearch {
 		int low = start;
 		int high = end;
 
-		while (low <= high){
+		while (low < high){
 			int mid = (low + high) >> 1;
 			int midVal = arr[mid];
 			if(midVal < key)        low = mid + 1;
@@ -60,7 +60,7 @@ public class MyBinarySearch {
 		int low = start;
 		int high = end;
 
-		while (low <= high) {
+		while (low < high) {
 			int mid = (low + high) >> 1;
 			int midVal = arr[mid];
 			if(midVal > key)    high = mid - 1;
