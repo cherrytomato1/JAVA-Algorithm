@@ -5,7 +5,6 @@ import java.util.*;
 class Solution {
 
 	int[][][] table;
-	int[][] board;
 
 	Map<String, List<Integer>> blockMap;
 	int[] blockCounter;
