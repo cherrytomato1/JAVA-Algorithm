@@ -19,7 +19,13 @@ public class Main {
 //		BinarySearchTest();
 //		/trieTest();
 
-		Integer[] arr = {1,2,3};
+
+
+		Integer[] arr = {-99, -2, -1, 4, 98};
+
+		int[] arr2 = {-99, -2, -1, 4, 98};
+		System.out.println(MyBinarySearch.lowerBound(arr2, 0, arr2.length, -arr2[0]));
+
 		Arrays.sort(arr, new Comparator<Integer>(){
 			@Override
 			public int compare(Integer o1, Integer o2) {
@@ -28,26 +34,12 @@ public class Main {
 		});
 
 
-
-
-
 		Comparator<Integer> comparator = (o1, o2) -> Integer.compare(o1, o2);
 
 
 
 
-
-
-
-
-
 		Arrays.sort(arr, (o1, o2) -> Integer.compare(o1, o2));
-
-
-
-
-
-
 
 
 
