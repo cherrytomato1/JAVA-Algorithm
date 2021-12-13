@@ -1,6 +1,5 @@
-package boj.boj0178_2101120_15834_elis_curious_mind;
+package boj.boj0179_2101120_15834_elis_curious_mind;
 
-import java.util.*;
 import java.io.*;
 
 /**
