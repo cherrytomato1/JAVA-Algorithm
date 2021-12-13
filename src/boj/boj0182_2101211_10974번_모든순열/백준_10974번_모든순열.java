@@ -1,4 +1,4 @@
-package boj.boj0180_2101211_10974번_모든순열;
+package boj.boj0182_2101211_10974번_모든순열;
 
 import java.io.*;
 

@@ -1,4 +1,4 @@
-package boj.boj0178_2101125_1260_s2_dfs와bfs;
+package boj.boj0180_2101125_1260_s2_dfs와bfs;
 
 import java.util.*;
 import java.io.*;

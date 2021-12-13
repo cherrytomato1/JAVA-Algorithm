@@ -1,4 +1,4 @@
-package boj.boj0180_2101205_16987_s1_계란으로계란치기;
+package boj.boj0181_2101205_16987_s1_계란으로계란치기;
 
 import java.util.*;
 import java.io.*;
